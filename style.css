@@ -50,3 +50,10 @@ footer { display:flex; justify-content:space-between; padding:20px 0 25px; borde
 .title-accent:after { animation-duration:.5s; }
 .title-star { display:inline-block; transform:scale(0); animation:star-zoom .35s cubic-bezier(.2,1.4,.4,1) .5s both; }
 @keyframes star-zoom { from { transform:scale(0) rotate(-25deg); } to { transform:scale(1) rotate(0); } }
+.hero-carousel { display:none; }
+.scroll-cue { transform:translateY(28px); }
+@media (max-width:700px) { .scroll-cue { transform:translateY(18px); } }
+.projects-section { margin-top:-35px; }
+@media (max-width:700px) { .projects-section { margin-top:-20px; } }
+.projects-section { margin-top:30px; }
+@media (max-width:700px) { .projects-section { margin-top:10px; } }
