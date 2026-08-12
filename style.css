@@ -44,3 +44,9 @@ footer { display:flex; justify-content:space-between; padding:20px 0 25px; borde
 .slide-one { background:linear-gradient(115deg, var(--lavender) 0 34%, transparent 34%), linear-gradient(25deg, var(--mint) 0 45%, var(--yellow) 45% 72%, var(--coral) 72%); }
 .slide-two { background:linear-gradient(115deg, var(--mint) 0 29%, var(--lavender) 29% 63%, transparent 63%), linear-gradient(25deg, var(--mint) 0 45%, var(--yellow) 45% 72%, var(--coral) 72%); }
 .slide-three { background:linear-gradient(115deg, var(--mint) 0 58%, var(--lavender) 58% 88%, transparent 88%), linear-gradient(25deg, var(--mint) 0 45%, var(--yellow) 45% 72%, var(--coral) 72%); }
+.slide-one { opacity:1; animation:none; }
+.title-accent:after { transform-origin:left center; animation:line-reveal .9s ease-out both; }
+@keyframes line-reveal { from { transform:scaleX(0) rotate(-2deg); } to { transform:scaleX(1) rotate(-2deg); } }
+.title-accent:after { animation-duration:.5s; }
+.title-star { display:inline-block; transform:scale(0); animation:star-zoom .35s cubic-bezier(.2,1.4,.4,1) .5s both; }
+@keyframes star-zoom { from { transform:scale(0) rotate(-25deg); } to { transform:scale(1) rotate(0); } }
