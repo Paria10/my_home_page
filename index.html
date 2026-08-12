@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paria's Project Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Paria's Project Hub home">
+        <span class="brand-mark">✦</span>
+        <span>PARIA<span class="brand-dot">.</span>HUB</span>
+      </a>
+      <div class="topbar-meta">PERSONAL SPACE <span class="slash">/</span> Summer 2026</div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-carousel" aria-label="Welcome area picture carousel">
+          <div class="carousel-slide slide-one"></div>
+          <div class="carousel-slide slide-two"></div>
+          <div class="carousel-slide slide-three"></div>
+        </div>
+        <div class="eyebrow"><span class="eyebrow-line"></span> WELCOME TO THE WORKSHOP</div>
+        <h1>Paria's<br><span class="title-accent">Project Hub</span><span class="title-star">✳</span></h1>
+        <a class="scroll-cue" href="#projects"><span class="scroll-arrow">↓</span> EXPLORE PROJECTS</a>
+      </section>
+
+      <section class="projects-section" id="projects">
+        <div class="project-grid">
+          <a class="project-card game-card" href="#" aria-label="Open My First Game project">
+            <div class="card-top"><span class="tag">GAME / 001</span><span class="open-icon">↗</span></div>
+            <div class="game-art" aria-hidden="true"><span class="pixel planet">◒</span><span class="pixel spark spark-one">✦</span><span class="pixel spark spark-two">✦</span><span class="pixel rocket">▲</span><span class="pixel triangle-extra">▲</span><span class="pixel circle-extra">●</span></div>
+            <div class="card-bottom"><h3>My First Game</h3><span class="card-arrow">↗</span></div>
+            <p>A tiny universe built from scratch.</p>
+          </a>
+          <div class="project-card blank-card blank-one" aria-hidden="true"></div>
+          <div class="project-card blank-card blank-two" aria-hidden="true"></div>
+          <div class="project-card blank-card blank-three" aria-hidden="true"></div>
+          <div class="project-card blank-card blank-four" aria-hidden="true"></div>
+          <div class="project-card blank-card blank-five" aria-hidden="true"></div>
+          <div class="project-card blank-card blank-six" aria-hidden="true"></div>
+          <div class="project-card blank-card blank-seven" aria-hidden="true"></div>
+          <div class="project-card blank-card blank-eight" aria-hidden="true"></div>
+          <div class="project-card blank-card blank-nine" aria-hidden="true"></div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer><span>MADE WITH CURIOSITY</span><span>© PARIA 2026</span></footer>
+  </div>
+  <script>
+    const gameCard = document.querySelector('.game-card');
+    gameCard.addEventListener('mouseenter', () => {
+      gameCard.classList.add('is-animating');
+      gameCard.querySelectorAll('.pixel').forEach((element) => {
+        element.style.animationPlayState = 'running';
+      });
+    });
+    gameCard.addEventListener('mouseleave', () => {
+      gameCard.querySelectorAll('.pixel').forEach((element) => {
+        element.style.animationPlayState = 'paused';
+      });
+    });
+  </script>
+</body>
+</html>
