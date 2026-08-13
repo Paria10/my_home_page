@@ -57,3 +57,4 @@ footer { display:flex; justify-content:space-between; padding:20px 0 25px; borde
 @media (max-width:700px) { .projects-section { margin-top:-20px; } }
 .projects-section { margin-top:30px; }
 @media (max-width:700px) { .projects-section { margin-top:10px; } }
+.placeholder-art { flex:1; min-height:210px; margin:19px 0; display:grid; place-items:center; border:1.5px dashed var(--ink); background:rgba(246,241,232,.2); font-size:48px; font-weight:300; opacity:.72; }
