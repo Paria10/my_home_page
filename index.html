@@ -37,8 +37,8 @@
             <div class="card-bottom"><h3>My First Game</h3><span class="card-arrow">↗</span></div>
             <p>A tiny universe built from scratch.</p>
           </a>
-          <a class="project-card blank-card blank-one" href="https://tic-tac-toe-eight-chi-54.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Neon Grid"><div class="card-top"><span class="tag">Project / 002</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Neon Grid</h3><span class="card-arrow">↗</span></div><p>Three in a row, lit up your way.</p></a>
-          <div class="project-card blank-card blank-two"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
+          <a class="project-card blank-card blank-one" href="https://tic-tac-toe-eight-chi-54.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Neon Grid"><div class="card-top"><span class="tag">Project / 002</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true"><span class="mark mark-x x-one">X</span><span class="mark mark-o o-one">O</span><span class="mark mark-x x-two">X</span><span class="mark mark-o o-two">O</span><span class="mark mark-x x-three">X</span><span class="mark mark-x x-four">X</span><span class="mark mark-o o-four">O</span><span class="mark mark-x x-five">X</span><span class="mark mark-o o-five">O</span><span class="mark mark-x x-six">X</span><span class="mark mark-o o-six">O</span><span class="mark mark-x x-seven">X</span><span class="mark mark-o o-seven">O</span><span class="mark mark-o o-eight">O</span><span class="mark mark-x x-eight">X</span></div><div class="card-bottom"><h3>Neon Grid</h3><span class="card-arrow">↗</span></div><p>Three in a row, lit up your way.</p></a>
+          <a class="project-card blank-card blank-two" href="https://space-restaurant-gules.vercel.app/index.html#home" target="_blank" rel="noopener noreferrer" aria-label="Open Orbit and Embers"><div class="card-top"><span class="tag">PROJECT / 003</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Orbit & Embers</h3><span class="card-arrow">↗</span></div><p>Every dish comes from a different planet.</p></a>
           <div class="project-card blank-card blank-three"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
           <div class="project-card blank-card blank-four"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
           <div class="project-card blank-card blank-five"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
@@ -69,3 +69,28 @@
   </script>
 </body>
 </html>
+<script>
+  const neonGrid = document.querySelector(".blank-one .placeholder-art");
+  const neonMarks = [...neonGrid.querySelectorAll(".mark")];
+  let neonTimer;
+  neonGrid.addEventListener("mouseenter", () => {
+    neonMarks.forEach((mark) => mark.classList.remove("revealed"));
+    const order = [...neonMarks].sort(() => Math.random() - 0.5);
+    const visible = [];
+    let index = 0;
+    const revealNext = () => {
+      const next = order[index % order.length];
+      if (visible.length === 3) visible.shift().classList.remove("revealed");
+      next.classList.add("revealed");
+      visible.push(next);
+      index += 1;
+    };
+    revealNext();
+    revealNext();
+    revealNext();
+    neonTimer = setInterval(revealNext, 600);
+  });
+  neonGrid.addEventListener("mouseleave", () => {
+    clearInterval(neonTimer);
+  });
+</script>
