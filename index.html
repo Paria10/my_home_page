@@ -39,8 +39,8 @@
           </a>
           <a class="project-card blank-card blank-one" href="https://tic-tac-toe-eight-chi-54.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Neon Grid"><div class="card-top"><span class="tag">Project / 002</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true"><span class="mark mark-x x-one">X</span><span class="mark mark-o o-one">O</span><span class="mark mark-x x-two">X</span><span class="mark mark-o o-two">O</span><span class="mark mark-x x-three">X</span><span class="mark mark-x x-four">X</span><span class="mark mark-o o-four">O</span><span class="mark mark-x x-five">X</span><span class="mark mark-o o-five">O</span><span class="mark mark-x x-six">X</span><span class="mark mark-o o-six">O</span><span class="mark mark-x x-seven">X</span><span class="mark mark-o o-seven">O</span><span class="mark mark-o o-eight">O</span><span class="mark mark-x x-eight">X</span></div><div class="card-bottom"><h3>Neon Grid</h3><span class="card-arrow">↗</span></div><p>Three in a row, lit up your way.</p></a>
           <a class="project-card blank-card blank-two" href="https://space-restaurant-gules.vercel.app/index.html#home" target="_blank" rel="noopener noreferrer" aria-label="Open Orbit and Embers"><div class="card-top"><span class="tag">PROJECT / 003</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true"><span class="food-emoji food-1">🍽️</span><span class="food-emoji food-2">🍲</span><span class="food-emoji food-3">🥗</span><span class="food-emoji food-4">🍜</span><span class="food-emoji food-5">🍰</span><span class="food-emoji food-6">🍕</span><span class="food-emoji food-7">🍓</span><span class="food-emoji food-8">🥐</span><span class="food-emoji food-9">🍣</span><span class="food-emoji food-10">🥝</span><span class="food-emoji food-11">🍩</span><span class="food-emoji food-12">🍇</span></div><div class="card-bottom"><h3>Orbit & Embers</h3><span class="card-arrow">↗</span></div><p>Every dish comes from a different planet.</p></a>
-          <a class="project-card blank-card blank-three" href="https://mario-game-theta-two.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Mario Game"><div class="card-top"><span class="tag">PROJECT / 004</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Mario Game</h3><span class="card-arrow">↗</span></div><p>A bright, bouncy platform adventure packed with classic power-ups.</p></a>
-          <div class="project-card blank-card blank-four"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
+          <a class="project-card blank-card blank-three" href="https://mario-game-theta-two.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Mario Game"><div class="card-top"><span class="tag">PROJECT / 004</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true"><span class="scene-tree tree-small"></span><span class="scene-tree tree-tall"></span><span class="scene-tree tree-mid"></span><span class="scene-tree tree-far"></span></div><div class="card-bottom"><h3>Mario Game</h3><span class="card-arrow">↗</span></div><p>A bright, bouncy platform adventure packed with classic power-ups.</p></a>
+          <a class="project-card blank-card blank-four" href="https://whack-a-mole-lab.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Whack-A-Mole Lab"><div class="card-top"><span class="tag">PROJECT / 005</span><span class="open-icon">↗</span></div><div class="placeholder-art whack-title-art" aria-hidden="true"><span class="mini-mascot"></span><div class="mini-title"><span class="mini-title-part">Whack</span><span class="mini-title-part">-A</span><span class="mini-title-part mini-mole">-Mole</span><span class="mini-title-part">!</span></div><span class="tiny-mole tiny-normal"></span><span class="tiny-mole tiny-golden"></span><span class="tiny-mole tiny-red"></span></div><div class="card-bottom"><h3>Whack-A-Mole Lab</h3><span class="card-arrow">↗</span></div><p>Quick reflexes, cheeky moles, and endless arcade fun.</p></a>
           <div class="project-card blank-card blank-five"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
           <div class="project-card blank-card blank-six"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
           <div class="project-card blank-card blank-seven"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
@@ -74,25 +74,30 @@
   const neonGrid = neonCard.querySelector(".placeholder-art");
   const neonMarks = [...neonGrid.querySelectorAll(".mark")];
   let neonTimer;
+  const showInitialMarks = () => {
+    neonMarks.forEach((mark) => mark.classList.remove("revealed", "initial"));
+    [...neonMarks].sort(() => Math.random() - 0.5).slice(0, 3).forEach((mark) => mark.classList.add("initial"));
+  };
+  showInitialMarks();
   neonCard.addEventListener("mouseenter", () => {
-    neonMarks.forEach((mark) => mark.classList.remove("revealed"));
+    neonMarks.forEach((mark) => mark.classList.remove("revealed", "initial"));
     const order = [...neonMarks].sort(() => Math.random() - 0.5);
     const visible = [];
+    const maxVisible = 4 + Math.floor(Math.random() * 2);
     let index = 0;
     const revealNext = () => {
       const next = order[index % order.length];
-      if (visible.length === 3) visible.shift().classList.remove("revealed");
+      if (visible.length >= maxVisible) visible.shift().classList.remove("revealed", "initial");
       next.classList.add("revealed");
       visible.push(next);
       index += 1;
     };
     revealNext();
-    revealNext();
-    revealNext();
-    neonTimer = setInterval(revealNext, 450);
+    neonTimer = setInterval(revealNext, 300);
   });
   neonCard.addEventListener("mouseleave", () => {
     clearInterval(neonTimer);
+    showInitialMarks();
   });
 </script>
 <script>
@@ -104,5 +109,70 @@
   });
   foodCard.addEventListener("mouseleave", () => {
     foodPicture.querySelectorAll(".food-emoji").forEach((emoji) => emoji.style.animationPlayState = "paused");
+  });
+</script>
+<script>
+  const whackCard = document.querySelector(".blank-four");
+  const whackImage = whackCard.querySelector(".whack-title-art");
+  const moleTemplates = [...whackImage.querySelectorAll(".tiny-mole")];
+  let moleRevealTimer;
+  let moleLoopTimer;
+  const molePositions = [];
+  const spawnMole = () => {
+    const mole = moleTemplates[Math.floor(Math.random() * moleTemplates.length)].cloneNode(true);
+    mole.classList.add("spawned-mole", "visible");
+    let left;
+    let top;
+    let attempts = 0;
+    do {
+      left = 8 + Math.random() * 80;
+      top = 10 + Math.random() * 72;
+      attempts += 1;
+    } while (attempts < 20 && molePositions.some((position) => Math.hypot(position.left - left, position.top - top) < 16));
+    molePositions.push({ left, top });
+    mole.style.left = left + "%";
+    mole.style.top = top + "%";
+    whackImage.appendChild(mole);
+  };
+  whackCard.addEventListener("mouseenter", () => {
+    clearTimeout(moleRevealTimer);
+    clearInterval(moleLoopTimer);
+    whackImage.querySelectorAll(".spawned-mole").forEach((mole) => mole.remove());
+    molePositions.length = 0;
+    moleRevealTimer = setTimeout(() => {
+      spawnMole();
+      moleLoopTimer = setInterval(spawnMole, 100);
+    }, 1400);
+  });
+  whackCard.addEventListener("mouseleave", () => {
+    clearTimeout(moleRevealTimer);
+    clearInterval(moleLoopTimer);
+    whackImage.querySelectorAll(".spawned-mole").forEach((mole) => mole.remove());
+    molePositions.length = 0;
+  });
+</script>
+<script>
+  const sceneCard = document.querySelector(".blank-three");
+  const sceneImage = sceneCard.querySelector(".placeholder-art");
+  const sceneTrees = [...sceneImage.querySelectorAll(".scene-tree")];
+  let treeTimer;
+  let treeIndex = 0;
+  const spawnTree = () => {
+    const tree = sceneTrees[treeIndex % sceneTrees.length].cloneNode(true);
+    treeIndex += 1;
+    tree.classList.add("moving-tree");
+    tree.style.left = "110%";
+    tree.style.bottom = "25%";
+    sceneImage.appendChild(tree);
+  };
+  sceneCard.addEventListener("mouseenter", () => {
+    sceneCard.querySelectorAll(".scene-tree").forEach((tree) => tree.style.animationPlayState = "running");
+    clearInterval(treeTimer);
+    treeTimer = setInterval(spawnTree, 1200);
+    spawnTree();
+  });
+  sceneCard.addEventListener("mouseleave", () => {
+    sceneCard.querySelectorAll(".scene-tree").forEach((tree) => tree.style.animationPlayState = "paused");
+    clearInterval(treeTimer);
   });
 </script>
