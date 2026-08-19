@@ -38,7 +38,7 @@
             <p>A tiny universe built from scratch.</p>
           </a>
           <a class="project-card blank-card blank-one" href="https://tic-tac-toe-eight-chi-54.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Neon Grid"><div class="card-top"><span class="tag">Project / 002</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true"><span class="mark mark-x x-one">X</span><span class="mark mark-o o-one">O</span><span class="mark mark-x x-two">X</span><span class="mark mark-o o-two">O</span><span class="mark mark-x x-three">X</span><span class="mark mark-x x-four">X</span><span class="mark mark-o o-four">O</span><span class="mark mark-x x-five">X</span><span class="mark mark-o o-five">O</span><span class="mark mark-x x-six">X</span><span class="mark mark-o o-six">O</span><span class="mark mark-x x-seven">X</span><span class="mark mark-o o-seven">O</span><span class="mark mark-o o-eight">O</span><span class="mark mark-x x-eight">X</span></div><div class="card-bottom"><h3>Neon Grid</h3><span class="card-arrow">↗</span></div><p>Three in a row, lit up your way.</p></a>
-          <a class="project-card blank-card blank-two" href="https://space-restaurant-gules.vercel.app/index.html#home" target="_blank" rel="noopener noreferrer" aria-label="Open Orbit and Embers"><div class="card-top"><span class="tag">PROJECT / 003</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Orbit & Embers</h3><span class="card-arrow">↗</span></div><p>Every dish comes from a different planet.</p></a>
+          <a class="project-card blank-card blank-two" href="https://space-restaurant-gules.vercel.app/index.html#home" target="_blank" rel="noopener noreferrer" aria-label="Open Orbit and Embers"><div class="card-top"><span class="tag">PROJECT / 003</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true"><span class="food-emoji food-1">🍽️</span><span class="food-emoji food-2">🍲</span><span class="food-emoji food-3">🥗</span><span class="food-emoji food-4">🍜</span><span class="food-emoji food-5">🍰</span><span class="food-emoji food-6">🍕</span><span class="food-emoji food-7">🍓</span><span class="food-emoji food-8">🥐</span><span class="food-emoji food-9">🍣</span><span class="food-emoji food-10">🥝</span><span class="food-emoji food-11">🍩</span><span class="food-emoji food-12">🍇</span></div><div class="card-bottom"><h3>Orbit & Embers</h3><span class="card-arrow">↗</span></div><p>Every dish comes from a different planet.</p></a>
           <a class="project-card blank-card blank-three" href="https://mario-game-theta-two.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Mario Game"><div class="card-top"><span class="tag">PROJECT / 004</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Mario Game</h3><span class="card-arrow">↗</span></div><p>A bright, bouncy platform adventure packed with classic power-ups.</p></a>
           <div class="project-card blank-card blank-four"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
           <div class="project-card blank-card blank-five"><div class="card-top"><span class="tag">PROJECT / 00X</span><span class="open-icon">↗</span></div><div class="placeholder-art" aria-hidden="true">+</div><div class="card-bottom"><h3>Untitled Project</h3><span class="card-arrow">↗</span></div></div>
@@ -70,10 +70,11 @@
 </body>
 </html>
 <script>
-  const neonGrid = document.querySelector(".blank-one .placeholder-art");
+  const neonCard = document.querySelector(".blank-one");
+  const neonGrid = neonCard.querySelector(".placeholder-art");
   const neonMarks = [...neonGrid.querySelectorAll(".mark")];
   let neonTimer;
-  neonGrid.addEventListener("mouseenter", () => {
+  neonCard.addEventListener("mouseenter", () => {
     neonMarks.forEach((mark) => mark.classList.remove("revealed"));
     const order = [...neonMarks].sort(() => Math.random() - 0.5);
     const visible = [];
@@ -88,9 +89,20 @@
     revealNext();
     revealNext();
     revealNext();
-    neonTimer = setInterval(revealNext, 600);
+    neonTimer = setInterval(revealNext, 450);
   });
-  neonGrid.addEventListener("mouseleave", () => {
+  neonCard.addEventListener("mouseleave", () => {
     clearInterval(neonTimer);
+  });
+</script>
+<script>
+  const foodCard = document.querySelector(".blank-two");
+  const foodPicture = foodCard.querySelector(".placeholder-art");
+  foodCard.addEventListener("mouseenter", () => {
+    foodCard.classList.add("food-moving");
+    foodPicture.querySelectorAll(".food-emoji").forEach((emoji) => emoji.style.animationPlayState = "running");
+  });
+  foodCard.addEventListener("mouseleave", () => {
+    foodPicture.querySelectorAll(".food-emoji").forEach((emoji) => emoji.style.animationPlayState = "paused");
   });
 </script>
